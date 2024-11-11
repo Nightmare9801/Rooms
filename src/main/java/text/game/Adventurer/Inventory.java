@@ -1,4 +1,6 @@
-package text.game;
+package text.game.Adventurer;
+
+import text.game.Items.Item;
 
 public class Inventory {
     public static Item[] items = new Item[20];
@@ -14,12 +16,31 @@ public class Inventory {
         System.out.println("Inventory is full. Cannot add " + item.getName() + ".");
     }
 
-    public static void removeItem(int no) {
+    public boolean contains(String name) {
+        for (Item item : items) {
+            if (item!= null && item.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeItem(int no) {
         if (items[no]!= null) {
             items[no] = null;
             System.out.println("Removed item from inventory.");
         } else {
             System.out.println("There is no item at position " + no + ".");
+        }
+    }
+
+    public void removeItem(String name) {
+        for(Item item : items) {
+            if (item!= null && item.getName().equals(name)) {
+                item = null;
+                System.out.println("Removed " + name + " from your inventory.");
+                return;
+            }
         }
     }
 
@@ -35,19 +56,7 @@ public class Inventory {
     public int use(String name, Adventurer adventurer) {
         for (int i = 0; i < items.length; i++) {
             if (items[i]!= null && items[i].getName().equals(name)) {
-                if (items[i].isEatable) {
-                    System.out.println("Used " + items[i].getName() + ".");
-                    if (items[i].healingPoints > 0) {
-                        adventurer.currentHealth += items[i].healingPoints;
-                        if (adventurer.currentHealth > adventurer.maxHealth) {
-                            adventurer.currentHealth = adventurer.maxHealth;
-                        }
-                    }
-                    removeItem(i);
-                } else if (items[i].isWeapon) {
-                    return items[i].damagePoints;
-                }
-                return -1;
+                return 0;
             }
         }
         System.out.println("You don't have " + name + " in your inventory.");

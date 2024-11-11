@@ -1,10 +1,14 @@
 package text.game.Rooms;
 
-import text.game.Adventurer;
+import java.util.ArrayList;
+
+import text.game.Adventurer.Adventurer;
+import text.game.Items.Item;
 
 public abstract class Room {
-    boolean isSolved = false;
+    public boolean isSolved = false;
     String name = "";
+    ArrayList<Item> items = new ArrayList<>();
     public void run(Adventurer adventurer) {
         
     }

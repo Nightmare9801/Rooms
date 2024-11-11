@@ -1,4 +1,4 @@
-package text.game;
+package text.game.Adventurer;
 
 import java.util.ArrayList;
 
