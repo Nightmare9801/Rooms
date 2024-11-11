@@ -3,7 +3,7 @@ package text.game.Adventurer;
 import text.game.Rooms.Room;
 
 public class Adventurer {
-    Inventory inventory;
+    public Inventory inventory;
 
     public boolean isDead = false;
 
@@ -23,6 +23,9 @@ public class Adventurer {
         if(inventory.contains("Potion Of Ressurection")) {
             inventory.removeItem("Potion Of Ressurection");
             System.out.println("You have successfully resurrected!");
+            return;
         }
+
+        System.exit(0);
     }
 }

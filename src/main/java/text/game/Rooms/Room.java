@@ -7,7 +7,7 @@ import text.game.Items.Item;
 
 public abstract class Room {
     public boolean isSolved = false;
-    String name = "";
+    public static String name = "";
     ArrayList<Item> items = new ArrayList<>();
     public void run(Adventurer adventurer) {
         

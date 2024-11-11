@@ -1,11 +1,19 @@
 package text.game.Adventurer;
 
 import text.game.Items.Item;
+import text.game.Items.KeyFragments;
 
 public class Inventory {
-    public static Item[] items = new Item[20];
+    public static Item[] items = new Item[5];
 
     public static void addItem(Item item) {
+
+        if(item instanceof KeyFragments ) {
+            if(contains("KeyFragments")) {
+                KeyFragments.updateCount();
+            }
+        }
+
         for (int i = 0; i < items.length; i++) {
             if (items[i] == null) {
                 items[i] = item;
@@ -16,7 +24,7 @@ public class Inventory {
         System.out.println("Inventory is full. Cannot add " + item.getName() + ".");
     }
 
-    public boolean contains(String name) {
+    public static boolean contains(String name) {
         for (Item item : items) {
             if (item!= null && item.getName().equals(name)) {
                 return true;

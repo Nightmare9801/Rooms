@@ -33,7 +33,7 @@ public class SphinxsLair extends Room {
                     return;
                 }
 
-                if(option == 1) {
+                if(option == 2) {
                     System.out.println("A menu appears.");
                     System.out.println("To talk to the sphinx, place your hands on the altar.");
                     System.out.println("1. Place your hands.");
@@ -68,7 +68,7 @@ public class SphinxsLair extends Room {
                     } else {
                         System.out.println("Wrong command");
                     }
-                } else if(option == 2) {
+                } else if(option == 1) {
                     System.out.println("i. Open the wardrobe");
                     int resp = Integer.parseInt(in.nextLine());
 
