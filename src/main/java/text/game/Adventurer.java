@@ -3,7 +3,9 @@ package text.game;
 public class Adventurer {
     Data data;
     Inventory inventory;
+    
 
+    
     public int currentHealth = 900;
     public int maxHealth = 900;
 
