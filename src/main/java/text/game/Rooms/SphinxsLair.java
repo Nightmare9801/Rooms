@@ -6,7 +6,6 @@ import java.util.Scanner;
 import text.game.Adventurer.Adventurer;
 import text.game.Adventurer.Inventory;
 import text.game.Items.KeyFragments;
-import text.game.Items.PotionOfRessurection;
 import text.game.Items.RingOfDiscontinuity;
 
 public class SphinxsLair extends Room {
@@ -14,26 +13,23 @@ public class SphinxsLair extends Room {
         this.name = "The Sphinx's Lair";
         this.items = new ArrayList<>();
         items.add(new RingOfDiscontinuity());
-        items.add(new PotionOfRessurection());
-        //items.add(new MirrorOfRevelation());
         items.add(new KeyFragments());
     }
     public void run(Adventurer adventurer) {
         try(Scanner in = new Scanner(System.in)){
             System.out.println("You are suddenly transported to a big and imposing hallway, decorated lavishly. You spot an altar at the end of the hallway and a peculiar wardrobe.");
             while (isSolved) {
-                
-                System.out.println("1. Go to the wardrobe.");
-                System.out.println("2. Go to the altar.");
-                System.out.println("3. Exit the room.");
+            
+                System.out.println("1. Go to the altar.");
+                System.out.println("2. Exit the room.");
 
                 int option = Integer.parseInt(in.nextLine());
 
-                if(option == 3) {
+                if(option == 2) {
                     return;
                 }
 
-                if(option == 2) {
+                if(option == 1) {
                     System.out.println("A menu appears.");
                     System.out.println("To talk to the sphinx, place your hands on the altar.");
                     System.out.println("1. Place your hands.");
@@ -67,14 +63,6 @@ public class SphinxsLair extends Room {
                         return;
                     } else {
                         System.out.println("Wrong command");
-                    }
-                } else if(option == 1) {
-                    System.out.println("i. Open the wardrobe");
-                    int resp = Integer.parseInt(in.nextLine());
-
-                    if(resp == 1) {
-                        System.out.println("As you open the doors, you see a potion of ressurection.");
-                        Inventory.addItem(new PotionOfRessurection());
                     }
                 }
             }

@@ -20,12 +20,6 @@ public class Adventurer {
     public void kill() {
         isDead = true;
         System.out.println("You have been defeated!");
-        if(inventory.contains("Potion Of Ressurection")) {
-            inventory.removeItem("Potion Of Ressurection");
-            System.out.println("You have successfully resurrected!");
-            return;
-        }
-
         System.exit(0);
     }
 }
