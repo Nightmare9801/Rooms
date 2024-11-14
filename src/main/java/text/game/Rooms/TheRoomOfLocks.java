@@ -3,7 +3,6 @@ package text.game.Rooms;
 import java.util.Scanner;
 
 import text.game.Adventurer.Adventurer;
-import text.game.Adventurer.Inventory;
 import text.game.Items.KeyFragments;
 
 public class TheRoomOfLocks  extends Room {
@@ -16,8 +15,8 @@ public class TheRoomOfLocks  extends Room {
 
             if(ans.equalsIgnoreCase("0-4-2")) {
                 System.out.println("You have successfully solved the room.");
-                Inventory.addItem(new KeyFragments());
-
+                KeyFragments.updateCount();
+                
                 this.isSolved = true;
                 return;
             }

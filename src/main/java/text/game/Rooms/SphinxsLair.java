@@ -4,21 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import text.game.Adventurer.Adventurer;
-import text.game.Adventurer.Inventory;
 import text.game.Items.KeyFragments;
-import text.game.Items.RingOfDiscontinuity;
 
 public class SphinxsLair extends Room {
     public SphinxsLair() {
         this.name = "The Sphinx's Lair";
-        this.items = new ArrayList<>();
-        items.add(new RingOfDiscontinuity());
-        items.add(new KeyFragments());
     }
     public void run(Adventurer adventurer) {
         try(Scanner in = new Scanner(System.in)){
             System.out.println("You are suddenly transported to a big and imposing hallway, decorated lavishly. You spot an altar at the end of the hallway and a peculiar wardrobe.");
-            while (isSolved) {
+            while (!isSolved) {
             
                 System.out.println("1. Go to the altar.");
                 System.out.println("2. Exit the room.");
@@ -54,11 +49,8 @@ public class SphinxsLair extends Room {
                             adventurer.kill();
                         }
 
-                        System.out.println("You have answered all my riddles, traveller. As a token of appreciation, I present to you a part of the broken key and the ring of discontinuity, which can be used once to solve any rooms.");
-                        Inventory.addItem(new RingOfDiscontinuity());
-                        Inventory.addItem(new KeyFragments());
-                        items.remove(new KeyFragments());
-                        items.remove(new RingOfDiscontinuity());
+                        System.out.println("You have answered all my riddles, traveller. As a token of appreciation, I present to you a part of the broken key.");
+                        KeyFragments.updateCount();
                         isSolved = true;
                         return;
                     } else {

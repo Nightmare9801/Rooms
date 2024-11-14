@@ -1,6 +1,7 @@
 package text.game.Adventurer;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import text.game.Rooms.Room;
 import text.game.Rooms.SphinxsLair;
@@ -24,14 +25,7 @@ public class Menu {
 
         System.out.println("Inquisitively, you try to tap on the the first option.");
 
-        SphinxsLair lair = new SphinxsLair();
-        while(!lair.isSolved) {
-            lair.run(adv);
-            if(!lair.isSolved) {
-                System.out.println("You have not solved the room yet. Try again.");
-                lair = new SphinxsLair();
-            }
-        }
+        run(new SphinxsLair(), adv);
 
         System.out.println("Room List");
         System.out.println("1. The Sphinx's Lair -> Solved");
@@ -39,15 +33,7 @@ public class Menu {
         System.out.println("3. <Locked>");
         System.out.println("4. <Locked>");
 
-        TheClockworks clockworks = new TheClockworks();
-
-        while(!clockworks.isSolved) {
-            clockworks.run(adv);
-            if(!clockworks.isSolved) {
-                System.out.println("You have not solved the room yet. Try again.");
-                clockworks = new TheClockworks();
-            }
-        }
+        run(new TheClockworks(), adv);
 
         System.out.println("Room List");
         System.out.println("1. The Sphinx's Lair -> Solved");
@@ -55,15 +41,7 @@ public class Menu {
         System.out.println("3. The Room Of Locks");
         System.out.println("4. <Locked>");
 
-        TheRoomOfLocks room = new TheRoomOfLocks();
-
-        while(!room.isSolved) {
-            room.run(adv);
-            if(!room.isSolved) {
-                System.out.println("You have not solved the room yet. Try again.");
-                room = new TheRoomOfLocks();
-            }
-        }
+        run(new TheRoomOfLocks(), adv);
 
         System.out.println("Room List");
         System.out.println("1. The Sphinx's Lair -> Solved");
@@ -71,18 +49,22 @@ public class Menu {
         System.out.println("3. The Room Of Locks -> Solved");
         System.out.println("4. The Escape Chanber");
 
-        TheEscapeChamber chamber = new TheEscapeChamber();
-
-        while(!chamber.isSolved) {
-            chamber.run(adv);
-            if(!chamber.isSolved) {
-                System.out.println("You have not solved the room yet. Try again.");
-                chamber = new TheEscapeChamber();
-            }
-        }
+        run(new TheEscapeChamber(), adv);
 
         System.out.println("Congratulations! You have solved all the rooms!");
         System.out.println("Your Adventure Has Ended!");
 
+    }
+
+    public static void run(Room room, Adventurer adv) {
+        while(!room.isSolved) {
+            room.run(adv);
+            if(!room.isSolved) {
+                System.out.println("You have not solved the room yet. Try again.");
+            }
+        }
+        try(Scanner in = new Scanner(System.in)) {
+            in.nextLine();
+        }
     }
 }
