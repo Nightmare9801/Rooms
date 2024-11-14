@@ -1,8 +1,8 @@
 package text.game.Adventurer;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
+import text.game.Input.Input;
 import text.game.Rooms.Room;
 import text.game.Rooms.SphinxsLair;
 import text.game.Rooms.TheClockworks;
@@ -54,6 +54,8 @@ public class Menu {
         System.out.println("Congratulations! You have solved all the rooms!");
         System.out.println("Your Adventure Has Ended!");
 
+        Input.close();
+
     }
 
     public static void run(Room room, Adventurer adv) {
@@ -62,9 +64,6 @@ public class Menu {
             if(!room.isSolved) {
                 System.out.println("You have not solved the room yet. Try again.");
             }
-        }
-        try(Scanner in = new Scanner(System.in)) {
-            in.nextLine();
         }
     }
 }
