@@ -2,7 +2,8 @@ package text.game.Adventurer;
 
 import java.util.ArrayList;
 
-import text.game.Input.Input;
+import text.game.IO.Input;
+import text.game.IO.Printer;
 import text.game.Rooms.Room;
 import text.game.Rooms.SphinxsLair;
 import text.game.Rooms.TheClockworks;
@@ -13,56 +14,54 @@ public class Menu {
     public static ArrayList<Room> list = new ArrayList<>();
 
     public static void run() {
-        Adventurer adv = new Adventurer();
+        Printer.slowPrint("You wake up to a pure nothingness around you. As you try to figure out where you are, you notice a menu.");
 
-        System.out.println("You wake up to a pure nothingness around you. As you try to figure out where you are, you notice a menu.");
+        Printer.slowPrint("Room List");
+        Printer.slowPrint("1. The Sphinx's Lair");
+        Printer.slowPrint("2. <Locked>");
+        Printer.slowPrint("3. <Locked>");
+        Printer.slowPrint("4. <Locked>");
 
-        System.out.println("Room List");
-        System.out.println("1. The Sphinx's Lair");
-        System.out.println("2. <Locked>");
-        System.out.println("3. <Locked>");
-        System.out.println("4. <Locked>");
+        Printer.slowPrint("Inquisitively, you try to tap on the the first option.");
 
-        System.out.println("Inquisitively, you try to tap on the the first option.");
+        run(new SphinxsLair());
 
-        run(new SphinxsLair(), adv);
+        Printer.slowPrint("Room List");
+        Printer.slowPrint("1. The Sphinx's Lair -> Solved");
+        Printer.slowPrint("2. The ClockWorks");
+        Printer.slowPrint("3. <Locked>");
+        Printer.slowPrint("4. <Locked>");
 
-        System.out.println("Room List");
-        System.out.println("1. The Sphinx's Lair -> Solved");
-        System.out.println("2. The ClockWorks");
-        System.out.println("3. <Locked>");
-        System.out.println("4. <Locked>");
+        run(new TheClockworks());
 
-        run(new TheClockworks(), adv);
+        Printer.slowPrint("Room List");
+        Printer.slowPrint("1. The Sphinx's Lair -> Solved");
+        Printer.slowPrint("2. The ClockWorks -> Solved");
+        Printer.slowPrint("3. The Room Of Locks");
+        Printer.slowPrint("4. <Locked>");
 
-        System.out.println("Room List");
-        System.out.println("1. The Sphinx's Lair -> Solved");
-        System.out.println("2. The ClockWorks -> Solved");
-        System.out.println("3. The Room Of Locks");
-        System.out.println("4. <Locked>");
+        run(new TheRoomOfLocks());
 
-        run(new TheRoomOfLocks(), adv);
+        Printer.slowPrint("Room List");
+        Printer.slowPrint("1. The Sphinx's Lair -> Solved");
+        Printer.slowPrint("2. The ClockWorks -> Solved");
+        Printer.slowPrint("3. The Room Of Locks -> Solved");
+        Printer.slowPrint("4. The Escape Chanber");
 
-        System.out.println("Room List");
-        System.out.println("1. The Sphinx's Lair -> Solved");
-        System.out.println("2. The ClockWorks -> Solved");
-        System.out.println("3. The Room Of Locks -> Solved");
-        System.out.println("4. The Escape Chanber");
+        run(new TheEscapeChamber());
 
-        run(new TheEscapeChamber(), adv);
-
-        System.out.println("Congratulations! You have solved all the rooms!");
-        System.out.println("Your Adventure Has Ended!");
+        Printer.slowPrint("Congratulations! You have solved all the rooms!");
+        Printer.slowPrint("Your Adventure Has Ended!");
 
         Input.close();
 
     }
 
-    public static void run(Room room, Adventurer adv) {
+    public static void run(Room room) {
         while(!room.isSolved) {
-            room.run(adv);
+            room.run();
             if(!room.isSolved) {
-                System.out.println("You have not solved the room yet. Try again.");
+                Printer.slowPrint("You have not solved the room yet. Try again.");
             }
         }
     }
