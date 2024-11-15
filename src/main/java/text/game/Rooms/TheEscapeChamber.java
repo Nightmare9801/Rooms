@@ -17,6 +17,7 @@ public class TheEscapeChamber extends Room{
             if(KeyFragments.count == 3) {
                 Printer.slowPrint("You have successfully escaped the void.");
                 this.isSolved = true;
+                return;
             } else {
                 Printer.slowPrint("You are doomed to spend the rest of your life here.");
                 Exiter.exit();

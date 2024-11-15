@@ -8,7 +8,6 @@ public class Printer {
                 Thread.sleep(50); // Pause for the specified delay
             } catch (InterruptedException e) {
                 System.err.println("Interrupted: " + e.getMessage());
-                // Handle the interruption as needed
             }
         }
         System.out.println();

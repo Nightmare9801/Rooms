@@ -9,7 +9,7 @@ public class Input {
 
     public static String getLine() {
         try {
-            return in.readLine();
+            return in.readLine().trim();
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(0);
@@ -20,8 +20,14 @@ public class Input {
 
     public static int getInt() {
         try {
-            return Integer.parseInt(in.readLine());
-        } catch (NumberFormatException | IOException e) {
+            int x = 0;
+            String s = getLine();
+            while (!s.matches("\\d+")) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                s = getLine();
+            }
+            return Integer.parseInt(s);
+        } catch (NumberFormatException e) {
             e.printStackTrace();
             System.exit(0);
         }
